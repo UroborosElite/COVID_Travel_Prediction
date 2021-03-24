@@ -1,11 +1,14 @@
 # COVID_Travel_Prediction
 
-### Final Project for Columbia Bootcamp
+### Group 7 Final Project for Columbia U Bootcamp
 
 ## Question:
 In a country where majority of the population is vaccinated, will there be an uptick in travel? Will international travel out of major cities such as NYC follow the same trend as countries like Israel, which has had a successful vaccine roll out?
 
 ## Technologies Used
+* Python
+* Jupiter Notebook
+* HTML
 
 ## Data Cleaning and Analysis
 Pandas will be used to clean and explore the data.
@@ -13,40 +16,57 @@ Pandas will be used to clean and explore the data.
 ## Database Storage
 Postgres is the database we intend to use, integrating Flask as a means to display the data.
 
-## Machine Learning
-SciKitLearn is the ML library we will be using to create a classifier. We will be modeling our data using a linear regression model.
+## Machine Learning Model
+SciKitLearn is the ML library we will be using to create a classifier. We will be modeling our data using a linear regression model, using the last 30 days of USA and Israel vaccination data.
 
 ## Dashboard
-In addition to using a Flask template, we will also integrate D3.js and plotly for a  functioning dashboard. It will be hosted on S3.
+In addition to using a Flask template, we will also integrate D3.js and plotly for a functioning dashboard. It will be hosted on S3.
 
 
-Baseline: Israel and NYC, USA
+## Team Members
 
-Focus: International airplane travel following vaccination.
+	Caroline Leon
+* Github Repository
+* Machine Learning (collaborative effort)
+* Database Creation (collaborative effort)
 
-## Data Source: 
+	Amirah Daniels
+* Machine Learning (collaborative effort)
+* Database Creation (collaborative effort)
 
-Israel Data https://ourworldindata.org/coronavirus/country/israel?country=~ISR
+# Presentation
 
-TSA Checkpoint Data https://www.tsa.gov/coronavirus/passenger-throughput
-
-CDC https://covid.cdc.gov/covid-data-tracker/#vaccinations
-
-
-Team Members
-
-	Caroline 
-
-	Amirah
-
-
-Topic(s):
+## Topic:
 
 	How many people are getting the Covid vaccine?
 
-	How many people booked international cruises in 2019 vs 2020 and forecast for 2021?
+
+## Why Did You Select This Topic?
 
 
-Github 
+## Data Source Description:
 
-	Caroline
+Our World in Data: https://ourworldindata.org/coronavirus
+
+Open Source Covid Data Updated Daily: https://github.com/owid/covid-19-data/blob/master/public/data/owid-covid-data.csv
+
+CDC was a main source of the data collated by Our World in Data: https://covid.cdc.gov/covid-data-tracker/#vaccinations
+
+## What Questions Do You Hope to Answer With The Data?
+
+
+## Overview of Project
+
+### Purpose
+
+## Analysis and Challenges
+
+### Challenges and Difficulties Encountered
+
+## Results
+
+- What are some conclusions you can draw about the outcomes?
+
+- What are some limitations of this dataset?
+
+- What are some other possible tables and/or graphs that we could create?

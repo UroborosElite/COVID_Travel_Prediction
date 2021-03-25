@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script scr="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+  <script type="text/javascript" src="{{url_for('static',filename='app.js')}}"></script>
+  <title>Covid-19 Vaccines &amp; Flights</title>
+</head>
+<body class="text-white bg-dark">
+  <a class="navbar-brand" href="index.html">Covide-19 Vaccine Effects</a>
+  <div class="jumbotron">
+    <h1>Taking a deep dive into Covid-19 vaccinations<br/>
+      <br />
+      </h1>
+  </div>
+  <div class="container-fluid"> 
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Are we on track to meet president Biden’s May 2021 deadline for covid 19 vaccinations of Americans?
+          <br />
+        <br />
+        <small>Lets investigate...</small></h3>
+      </div>
+      <div class="col-md-6">
+        <p><br />
+        <br />
+        <br />
+        <br />
+        
+        <br />
+        <br /></p>
+      </div>
+    </div><!-- </div><input type="button" onclick="genChart()" value="Generate Graph" /> -->
+    <div class="text-white container-fluid p-5">
+      <div class="text-white banner mt-4">
+        <h1 class="text-white display-2 text-center bg-dark p-4 mt-4 border rounded shadow">Covid 19 Vaccinations</h1>
+      </div>
+      <div class="text-white row mt-4">
+        <div class="text-white col-md-10">
+          <table class="text-white table table-stripped">
+            <thead>
+              <tr>
+                <!-- <th><input type="text" id="date" placeholder="Date" /></th> -->
+                <!-- <th><input type="text" id="country" placeholder="Country" /></th> -->
+                <th>Location A<br />
+                <select id="locationA">
+                  {% for l in locationList %}
+                  <OPTION value="{{l}}" {% if l == "United States" %} selected {% endif %} >{{l}}</option>
+                  {% endfor %}
+                </select></th>
+                <th>Location B<br />
+                <select id="locationB">
+                  {% for l in locationList %}
+                  <OPTION value="{{l}}" {% if l == "Israel" %} selected {% endif %} >{{l}}</option>
+                  {% endfor %}
+                </select></th>
+                <th><input type="button" onclick="calcAll()" value="Calculate AB" /></th><!-- <th><button class="text-white btn btn-sm btn-primary">Clear Filter</button></th> -->
+              </tr>
+            </thead>
+          </table>
+          <div class="container-fluid" id='covid_data_line_chart'></div>
+          <table class="text-white table table-stripped">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Country</th>
+                <th>Total Vaccinations</th>
+                <th>People Vaccinated</th>
+                <th>Total Vaccinations Per Hundred</th>
+                <th>People Vaccinated Per Hundred</th>
+                <!-- <th>Daily Vaccinations Raw</th>
+                <th>Daily Vaccinations</th>
+                <th>Daily Vaccinations Per Million</th> -->
+                <th>People Fully Vaccinated</th>
+                <th>People Fully Vaccinated Per Hundred</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

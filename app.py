@@ -6,6 +6,7 @@ import numpy as np
 import sklearn
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import PolynomialFeatures
+from config import username, password
 
 import sqlalchemy
 from sqlalchemy import *

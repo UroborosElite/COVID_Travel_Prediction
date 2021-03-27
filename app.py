@@ -6,7 +6,6 @@ import numpy as np
 import sklearn
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import PolynomialFeatures
-from config import username, password
 
 import sqlalchemy
 from sqlalchemy import *
@@ -17,8 +16,8 @@ import matplotlib.pyplot as plt
 
 from flask import Flask, jsonify
 
-engine = create_engine(f"postgres://{username}:{password}@ec2-52-7-115-250.compute-1.amazonaws.com:5432/doai2olijqiuk")
-# engine = create_engine("sqlite:///hawaii.sqlite")
+engine = create_engine("postgres://znoczexejlxcgr:fc7eab8a2fa0cfa7f3ac7ad8efee94389de447cf0c0f2fcd95281fa7214612a7@ec2-52-7-115-250.compute-1.amazonaws.com:5432/doai2olijqiuk")
+
 Base = automap_base()
 Base.prepare(engine, reflect=True)
 session = Session(engine)

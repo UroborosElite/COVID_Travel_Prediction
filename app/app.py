@@ -30,7 +30,7 @@ session = Session(engine)
 # 	for column in inspector.get_columns(table_name):
 # 		print("Column: %s" % column['name'])
 
-MTS = Base.classes.mts
+# MTS = Base.classes.mts
 OWID = Base.classes.owid
 
 Important_Cols = [

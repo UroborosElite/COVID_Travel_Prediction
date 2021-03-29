@@ -47,7 +47,7 @@ Important_Cols = [
 'people_fully_vaccinated_per_hundred',
 ]
 
-Important_attributes = [getattr(OWID, attr) for attr in Important_Cols]
+# Important_attributes = [getattr(OWID, attr) for attr in Important_Cols]
 NotNull_filters = (
 	OWID.total_vaccinations != None,
 	OWID.people_vaccinated != None,
@@ -56,6 +56,16 @@ NotNull_filters = (
 	OWID.people_fully_vaccinated != None,
 	OWID.people_fully_vaccinated_per_hundred != None
 	)
+Important_attributes = [
+OWID.date,
+OWID.location,
+OWID.total_vaccinations,
+OWID.people_vaccinated,
+OWID.total_vaccinations_per_hundred,
+OWID.people_vaccinated_per_hundred,
+OWID.people_fully_vaccinated,
+OWID.people_fully_vaccinated_per_hundred
+]
 
 def row2dict(row):
     return {
@@ -92,22 +102,25 @@ def covid_locations():
 @app.route("/api/v1.0/covid_data/<location>")
 def covid_data_location(location="United States"):
 	results = session \
-		.query(*Important_attributes) \
-		.with_entities(*Important_attributes) \
+		.query(OWID) \
 		.filter(OWID.location == location) \
 		.filter(*NotNull_filters) \
+		.options(load_only(*Important_Cols)) \
 		.all() 
-	return jsonify(results) 
+	results_arr = []
+	for row in results:
+		results_arr.append(row)
+	return jsonify(results_arr)
 
 @app.route("/api/v1.0/covid_data_ab/<locationa>/<locationb>")
 def covid_data_ab_location(locationa="United States", locationb="Israel"):
 	results = session \
-		.query(*Important_attributes) \
-		.with_entities(*Important_attributes) \
+		.query( OWID.date,OWID.location,OWID.total_vaccinations,OWID.people_vaccinated,OWID.total_vaccinations_per_hundred,OWID.people_vaccinated_per_hundred,OWID.people_fully_vaccinated,OWID.people_fully_vaccinated_per_hundred) \
 		.filter(or_(OWID.location == locationa, OWID.location == locationb)) \
 		.filter(*NotNull_filters) \
 		.order_by(OWID.date.asc()) \
-		.all() 
+		.all()
+	# rows = [ row2dict(result) for result in results]
 	return jsonify(results) 
 
 @app.route("/api/v1.0/predict_fully_vaccinated/<location>")

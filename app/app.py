@@ -121,7 +121,7 @@ def covid_data_ab_location(locationa="United States", locationb="Israel"):
 		.order_by(OWID.date.asc()) \
 		.all()
 	# rows = [ row2dict(result) for result in results]
-	return jsonify(results) 
+	return json.dumps(results)
 
 @app.route("/api/v1.0/predict_fully_vaccinated/<location>")
 def predict_fully_vaccinated(location="United States"):

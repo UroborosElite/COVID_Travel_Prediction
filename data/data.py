@@ -2,7 +2,7 @@ import pandas as pd
 import re
 
 from sqlalchemy import create_engine
-engine = create_engine('postgresql://postgres:postgres@localhost:5432/covid_vaccine_travel')
+engine = create_engine('postgresql://localhost:5432/covid_vaccine_travel')
 
 ovid_df = pd.read_csv('owid-covid-data.csv')  
 try:

@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 
 from flask import Flask, jsonify
 
-engine = create_engine("postgresql+psycopg2://postgres:postgres@localhost/covid_vaccine_travel")
+engine = create_engine("postgresql://localhost/covid_vaccine_travel")
 # engine = create_engine("sqlite:///hawaii.sqlite")
 Base = automap_base()
 Base.prepare(engine, reflect=True)

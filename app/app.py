@@ -102,15 +102,13 @@ def covid_locations():
 @app.route("/api/v1.0/covid_data/<location>")
 def covid_data_location(location="United States"):
 	results = session \
-		.query(OWID) \
+		.query( OWID.date,OWID.location,OWID.total_vaccinations,OWID.people_vaccinated,OWID.total_vaccinations_per_hundred,OWID.people_vaccinated_per_hundred,OWID.people_fully_vaccinated,OWID.people_fully_vaccinated_per_hundred) \
 		.filter(OWID.location == location) \
 		.filter(*NotNull_filters) \
 		.options(load_only(*Important_Cols)) \
 		.all() 
-	results_arr = []
-	for row in results:
-		results_arr.append(row)
-	return jsonify(results_arr)
+	result_list = [list(row) for row in results]
+	return(json.dumps(result_list))
 
 @app.route("/api/v1.0/covid_data_ab/<locationa>/<locationb>")
 def covid_data_ab_location(locationa="United States", locationb="Israel"):
@@ -120,10 +118,7 @@ def covid_data_ab_location(locationa="United States", locationb="Israel"):
 		.filter(*NotNull_filters) \
 		.order_by(OWID.date.asc()) \
 		.all()
-	# rows = [ row2dict(result) for result in results]
-	# return json.dumps(results)
 	result_list = [list(row) for row in results]
-	result_dict = {'results': result_list}
 	return(json.dumps(result_list))
 
 

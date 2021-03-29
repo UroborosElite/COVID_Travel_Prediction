@@ -14,8 +14,11 @@ from sqlalchemy import create_engine, func, inspect, or_
 import matplotlib.pyplot as plt
 
 from flask import Flask, jsonify
+import os
 
-engine = create_engine("postgresql://localhost/covid_vaccine_travel")
+DATABASE_URL = os.environ.get('DATABASE_URL')
+
+engine = create_engine(DATABASE_URL)
 # engine = create_engine("sqlite:///hawaii.sqlite")
 Base = automap_base()
 Base.prepare(engine, reflect=True)

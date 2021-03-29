@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 from flask import Flask, jsonify
 import os
 
-DATABASE_URL = os.environ.get('DATABASE_URL')
+DATABASE_URL = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 
 engine = create_engine(DATABASE_URL)
 # engine = create_engine("sqlite:///hawaii.sqlite")
